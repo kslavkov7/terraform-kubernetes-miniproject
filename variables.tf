@@ -13,7 +13,7 @@ variable "app-port" {
 variable "image" {
   type        = string
   description = "nginx image version"
-  default     = "nginx:latest"
+  default     = "nginx:1.25"
 }
 
 variable "replicas" {
