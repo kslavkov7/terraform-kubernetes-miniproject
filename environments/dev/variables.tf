@@ -1,7 +1,7 @@
 variable "namespace" {
   description = "The namespace in which the cluster is created"
   type        = string
-  default     = "lab-devops"
+  default     = "dev"
 }
 
 variable "app-port" {
@@ -19,5 +19,5 @@ variable "image" {
 variable "replicas" {
   description = "number of replicas"
   type        = number
-  default     = 2
+  default     = 1
 }

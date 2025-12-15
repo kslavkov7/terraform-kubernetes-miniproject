@@ -6,7 +6,7 @@ resource "kubernetes_namespace_v1" "example" {
 
 resource "kubernetes_deployment_v1" "lab-deployment" {
   metadata {
-    name      = "devops-deployment"
+    name      = "${var.namespace}-deployment"
     namespace = var.namespace
     labels = {
       app = "MyApp"
@@ -35,7 +35,7 @@ resource "kubernetes_deployment_v1" "lab-deployment" {
           }
         }
         container {
-          name  = "devops-container"
+          name  = "${var.namespace}-container"
           image = var.image
           port {
             container_port = var.app-port
@@ -52,7 +52,7 @@ resource "kubernetes_deployment_v1" "lab-deployment" {
 
 resource "kubernetes_service_v1" "lab-service" {
   metadata {
-    name      = "devops-service"
+    name      = "${var.namespace}-service"
     namespace = var.namespace
   }
 
