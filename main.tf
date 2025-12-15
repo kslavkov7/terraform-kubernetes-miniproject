@@ -14,7 +14,7 @@ resource "kubernetes_deployment_v1" "lab-deployment" {
   }
 
   spec {
-    replicas = 1
+    replicas = 2
     selector {
       match_labels = {
         app = "MyApp"
