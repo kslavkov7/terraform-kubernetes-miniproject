@@ -23,6 +23,6 @@ kubectl port-forward svc/ingress-nginx-controller 8080:80 -n ingress-nginx
 
 
 versions used : 
-terraform ~> 1.9.x
-kubernetes ~> 3.x
-nginx = 1.25
+- terraform ~> 1.9.x
+- kubernetes ~> 3.x
+- nginx = 1.25
