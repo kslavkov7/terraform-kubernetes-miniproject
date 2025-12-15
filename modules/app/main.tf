@@ -81,3 +81,31 @@ resource "kubernetes_config_map_v1" "test-cm" {
     "index.html" = "<html><body>Hello from Terraform + Kubernetes!</body></html>"
   }
 }
+
+resource "kubernetes_ingress_v1" "ingress" {
+  metadata {
+    name      = "ingress-port-80"
+    namespace = var.namespace
+  }
+
+  spec {
+    rule {
+      host = "project.local"
+      http {
+        path {
+          path      = "/"
+          path_type = "Prefix"
+
+          backend {
+            service {
+              name = kubernetes_service_v1.lab-service.metadata[0].name
+              port {
+                number = var.app-port
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

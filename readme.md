@@ -9,9 +9,17 @@ How to initiate the app:
 
 How to access the app: 
 
-1) kubectl port-forward svc/devops-service 8080:80 -n lab-devops (that's used to port-forward the service and make it accessible in our browser using our local port 8080)
+1) deploy with terraform
+2) after the deployment open /etc/hosts and add the following row : 
 
-2) http://localhost:8080
+127.0.0.1 project.local
+
+3) port-forward the traffic to the ingress controller by using the following command : 
+
+kubectl port-forward svc/ingress-nginx-controller 8080:80 -n ingress-nginx
+
+4) http://project.local:8080
+
 
 
 versions used : 
