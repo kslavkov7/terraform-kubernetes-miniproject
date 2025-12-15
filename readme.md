@@ -9,6 +9,6 @@ How to initiate the app:
 
 How to access the app: 
 
-1) kubectl port-forward svc/devops-service 8080:80 -n lab-devops *that's used to port-forward the service and make it accessible in our browser using our local port 8080*
+1) kubectl port-forward svc/devops-service 8080:80 -n lab-devops (that's used to port-forward the service and make it accessible in our browser using our local port 8080)
 
 2) http://localhost:8080
