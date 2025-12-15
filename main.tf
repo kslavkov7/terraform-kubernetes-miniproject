@@ -28,11 +28,21 @@ resource "kubernetes_deployment_v1" "lab-deployment" {
       }
 
       spec {
+        volume {
+          name = "nginx-volume"
+          config_map {
+            name = kubernetes_config_map_v1.test-cm.metadata[0].name
+          }
+        }
         container {
           name  = "devops-container"
           image = "nginx"
           port {
             container_port = var.app-port
+          }
+          volume_mount {
+            name       = "nginx-volume"
+            mount_path = "/usr/share/nginx/html/"
           }
         }
       }
@@ -59,5 +69,15 @@ resource "kubernetes_service_v1" "lab-service" {
       target_port = var.app-port
       node_port   = 30100
     }
+  }
+}
+
+resource "kubernetes_config_map_v1" "test-cm" {
+  metadata {
+    name      = "nginx-config"
+    namespace = var.namespace
+  }
+  data = {
+    "index.html" = "<html><body>Hello from Terraform + Kubernetes!</body></html>"
   }
 }
