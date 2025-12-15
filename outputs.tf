@@ -1,3 +1,9 @@
-output "node-port" {
-  value = kubernetes_service_v1.lab-service.spec[0].port[0].node_port
+output "app_deployment_name" {
+  value       = module.app.deployment-name
+  description = "The name of the deployment created by the app module"
+}
+
+output "app_node_port" {
+  value       = module.app.node-port
+  description = "The NodePort of the service created by the app module"
 }
